@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <title>Цифровой прорыв 22 УР</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename= 'styles/style.css') }}">
+</head>
+<body>
+     <div id="loader" style="
+         min-width: 100vw;
+         min-height: 100vh;
+         position: fixed;
+         top: 0;
+         left: 0;
+         justify-content: center;
+         align-items: center;
+         background-color: rgba(0, 120, 201, 0.7);
+         z-index: 100;
+         display: none;
+     ">
+          <img src="{{ url_for('static', filename= 'imgs/loading-4.gif') }}">
+     </div>
+     <div style="
+         min-height: 600px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+     ">
+          <div id=""></div>
+          <form id="upload-container" method="post" action="" enctype=multipart/form-data>
+               <div id="image_div">
+                    <img id="upload-image" src="{{ url_for('static', filename= 'imgs/upload.png') }}">
+               </div>
+               <div>
+                    <input id="file-input" type="file" name="file" multiple>
+                    <label for="file-input">Выберите файл</label>
+                    <span>или перетащите его сюда</span>
+               </div>
+
+               <div class="coords coords_min-lat">
+                    <input type="number" step="0.000001" min="-90" max="90" name="min-lat" placeholder="min latitude">
+                    <!-- value="56.769295" -->
+               </div>
+               <div class="coords coords_min-lon">
+                    <input type="number" step="0.000001" min="-90" max="90" name="min-lon" placeholder="min longitude">
+                    <!-- value="53.464977" -->
+               </div>
+               <div class="coords coords_max-lat">
+                    <input type="number" step="0.000001" min="-90" max="90" name="max-lat" placeholder="max latitude">
+                    <!-- value="56.770769" -->
+               </div>
+               <div class="coords coords_max-lon">
+                    <input type="number" step="0.000001" min="-90" max="90" name="max-lon" placeholder="max longitude">
+                    <!-- value="53.467680" -->
+               </div>
+
+               <div class="submits">
+                    <input id="submit-button" type="submit" name="load" value="Загрузить">
+               </div>
+          </form>
+     </div>
+
+     <div id="result"></div>
+
+     <script
+             src="https://code.jquery.com/jquery-1.12.4.min.js"
+             integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+             crossorigin="anonymous"
+     ></script>
+     <script src="{{ url_for('static', filename= 'js/main.js') }}"></script>
+</body>
+</html>
